@@ -24,7 +24,7 @@
   </head>
   <body>
     <div>
-      <input type="text" id="inputBox" placeholder="막8" />
+      <input type="text" id="inputBox" placeholder="" />
       <br />
       <button id="submitButton">이동</button>
     </div>
@@ -33,15 +33,22 @@
         .getElementById("submitButton")
         .addEventListener("click", function () {
           var inputText = document.getElementById("inputBox").value;
-          var parsedText = inputText.match(/(\D+)(\d+)/);
-          // vol과 chap 확인
-          var vol = parsedText[1]; // "막"
-          var chap = parsedText[2]; // "8"
-          console.log(parsedText);
+										console.log(inputText)
+          // 숫자가 나오는 첫 번째 인덱스를 찾음
+          const index = inputText.search(/\d/);
+          const vol = inputText.substring(0, index);
+          const chap = inputText.substring(index);
+										console.log(inputText)
+          console.log(vol);
+          console.log(chap);
+										const obj = {
+											"막": 'mrk',
+											"마가복음": 'mrk'
+										}
 
           var url =
             "http://bible.godpia.com/read/reading.asp?ver=gae&ver2=&vol=" +
-            "mrk" +
+            obj[vol] +
             "&chap=" +
             chap +
             "&sec=";
