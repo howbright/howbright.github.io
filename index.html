@@ -1,25 +1,43 @@
 <!DOCTYPE html>
-<html>
+<html lang="ko">
 <head>
-	<script id="bw-widget-src" src="//ko.bibles.org/widget/client"></script>
-	<script>
-	BIBLESEARCH.widget({
-		"background": "044875",
-		"color": "FAF9F9",
-		"versions": "kor-NKRV"
-	});
-</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bible Navigation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        #inputBox {
+            margin-top: 100px;
+            padding: 10px;
+            font-size: 16px;
+        }
+        #submitButton {
+            margin-top: 10px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
-	<script id="bw-widget-src" src="//ko.bibles.org/widget/client"></script>
-	<script>
-	BIBLESEARCH.widget({
-		"background": "044875",
-		"color": "FAF9F9",
-		"versions": "kor-NKRV"
-	});
-	</script>
-<h1>Hello World</h1>
-<p>I'm hosted with GitHub Pages.</p>
+    <div>
+        <input type="text" id="inputBox" placeholder="막8">
+        <br>
+        <button id="submitButton">이동</button>
+    </div>
+
+    <script>
+        document.getElementById('submitButton').addEventListener('click', function() {
+            var inputText = document.getElementById('inputBox').value;
+            var parsedText = inputText.split(/(\d+)/); // 숫자를 기준으로 문자열을 나눔
+            var vol = parsedText[0]; // "막"
+            var chap = parsedText[1]; // "8"
+            var url = 'http://bible.godpia.com/read/reading.asp?ver=gae&ver2=&vol=' + 'mrk' + '&chap=' + chap + '&sec=';
+            window.open(url, '_blank'); // 새 창으로 URL 열기
+        });
+    </script>
 </body>
 </html>
