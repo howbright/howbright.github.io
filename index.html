@@ -264,10 +264,14 @@
       document
         .getElementById("submitButton")
         .addEventListener("click", function () {
-          var inputText = document.getElementById("inputBox").value;
+          const inputText = document.getElementById("inputBox").value;
           console.log(inputText);
           // 숫자가 나오는 첫 번째 인덱스를 찾음
-          const index = inputText.search(/\d/);
+          let index = inputText.search(/\d/);
+										console.log('index###', index)
+										if(index === -1){
+             index = inputText.length;
+										} 
           let vol = inputText.substring(0, index).trim();
           let chap = inputText.substring(index).trim();
           if (!chap) {
